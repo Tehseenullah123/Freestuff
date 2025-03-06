@@ -53,8 +53,8 @@
             display: none; /* Hide scrollbar for WebKit-based browsers */
         }
         .favorites img {
-            width: 200px;
-            height: 300px;
+            width: 150px;
+            height: 225px;
             margin: 10px;
             border-radius: 15px;
             transition: transform 0.5s ease, box-shadow 0.3s ease;
@@ -113,6 +113,25 @@
                 transform: translateY(0);
             }
         }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .button-group h2 {
+                font-size: 1.2rem;
+            }
+            .button-group button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .container {
+                padding: 15px;
+            }
+            .favorites img {
+                width: 100px;
+                height: 150px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -168,8 +187,8 @@
                 const img = document.createElement('img');
                 img.src = link.src;
                 img.alt = 'Favorite';
-                img.style.width = '200px';
-                img.style.height = '300px';
+                img.style.width = '150px';
+                img.style.height = '225px';
                 img.style.margin = '10px';
                 img.style.borderRadius = '15px';
                 img.style.transition = 'transform 0.5s ease, box-shadow 0.3s ease';

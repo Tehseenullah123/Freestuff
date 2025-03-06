@@ -56,12 +56,7 @@
             height: 225px;
             margin: 10px;
             border-radius: 15px;
-            transition: transform 0.5s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 255, 0, 0.2);
-        }
-        .favorites img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 8px rgba(0, 255, 0, 0.4);
         }
         .button-group {
             margin: 20px 0;
@@ -178,7 +173,11 @@
                 { src: 'favorite9.jpg', href: 'http://example.com/favorite9' },
                 { src: 'favorite10.jpg', href: 'http://example.com/favorite10' }
             ];
-            imageLinks.forEach(link => {
+
+            // Duplicate the list of images to create the illusion of infinite scrolling
+            const duplicatedLinks = imageLinks.concat(imageLinks);
+
+            duplicatedLinks.forEach(link => {
                 const a = document.createElement('a');
                 a.href = link.href;
                 a.target = '_blank'; // Open in a new tab/window
@@ -190,42 +189,13 @@
                 img.style.height = '225px';
                 img.style.margin = '10px';
                 img.style.borderRadius = '15px';
-                img.style.transition = 'transform 0.5s ease, box-shadow 0.3s ease';
                 img.style.boxShadow = '0 4px 6px rgba(0, 255, 0, 0.2)';
-                img.addEventListener('mouseover', () => {
-                    img.style.transform = 'scale(1.1)';
-                    img.style.boxShadow = '0 6px 8px rgba(0, 255, 0, 0.4)';
-                });
-                img.addEventListener('mouseout', () => {
-                    img.style.transform = 'scale(1)';
-                    img.style.boxShadow = '0 4px 6px rgba(0, 255, 0, 0.2)';
-                });
 
                 a.appendChild(img);
                 carousel.appendChild(a);
             });
         }
         window.onload = loadFavorites;
-
-        // Auto-scroll functionality
-        let scrollInterval;
-        const favoritesCarousel = document.getElementById('favoritesCarousel');
-
-        function startAutoScroll() {
-            scrollInterval = setInterval(() => {
-                favoritesCarousel.scrollLeft += 4;
-            }, 10);
-        }
-
-        function stopAutoScroll() {
-            clearInterval(scrollInterval);
-        }
-
-        favoritesCarousel.addEventListener('mouseover', stopAutoScroll);
-        favoritesCarousel.addEventListener('mouseout', startAutoScroll);
-
-        // Start auto-scroll on page load
-        startAutoScroll();
     </script>
 </body>
 </html>

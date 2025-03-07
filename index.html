@@ -205,26 +205,6 @@
             });
         }
         window.onload = loadFavorites;
-
-        // Auto-scroll functionality
-        let scrollInterval;
-        const favoritesCarousel = document.getElementById('favoritesCarousel');
-
-        function startAutoScroll() {
-            scrollInterval = setInterval(() => {
-                favoritesCarousel.scrollLeft += 4;
-            }, 10);
-        }
-
-        function stopAutoScroll() {
-            clearInterval(scrollInterval);
-        }
-
-        favoritesCarousel.addEventListener('mouseover', stopAutoScroll);
-        favoritesCarousel.addEventListener('mouseout', startAutoScroll);
-
-        // Start auto-scroll on page load
-        startAutoScroll();
     </script>
 </body>
 </html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Planet - Squid Game Season 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1117, #1c2331);
+            color: #00ff00;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+        h1 {
+            color: #00ff00;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+        .container {
+            background: rgba(13, 17, 23, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+        .thumbnail img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button-group h2 {
+            color: #00ff00;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .episode-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+        .button-group button {
+            background-color: #238636;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            margin: 8px 0;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            outline: none;
+            flex: 1;
+        }
+        .button-group button:hover {
+            background-color: #2ea043;
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 255, 0, 0.4);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .button-group h2 {
+                font-size: 1.2rem;
+            }
+            .button-group button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="itemTitle">Squid Game Season 1</h1>
+    <div class="container">
+        <div class="thumbnail">
+            <img src="favorite1.jpg" alt="Squid Game Thumbnail">
+        </div>
+        <div class="description">
+            <p>Welcome to the thrilling world of Squid Game Season 1. This season takes you through a harrowing journey of survival, where contestants face deadly challenges for a chance at a life-changing prize.</p>
+        </div>
+        <div class="button-group" id="episodesSection">
+            <h2>Episodes</h2>
+            <!-- Buttons for episodes will be added here dynamically -->
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Digital Planet. All rights reserved.</p>
+    </div>
+    <script>
+        // Load episodes dynamically
+        function loadEpisodes() {
+            const episodesSection = document.getElementById('episodesSection');
+            const episodes = [
+                { title: 'Episode 1', playLink: 'http://example.com/play/episode1', downloadLink: 'http://example.com/download/episode1' },
+                { title: 'Episode 2', playLink: 'http://example.com/play/episode2', downloadLink: 'http://example.com/download/episode2' },
+                { title: 'Episode 3', playLink: 'http://example.com/play/episode3', downloadLink: 'http://example.com/download/episode3' },
+                { title: 'Episode 4', playLink: 'http://example.com/play/episode4', downloadLink: 'http://example.com/download/episode4' },
+                { title: 'Episode 5', playLink: 'http://example.com/play/episode5', downloadLink: 'http://example.com/download/episode5' },
+                { title: 'Episode 6', playLink: 'http://example.com/play/episode6', downloadLink: 'http://example.com/download/episode6' },
+                { title: 'Episode 7', playLink: 'http://example.com/play/episode7', downloadLink: 'http://example.com/download/episode7' },
+                { title: 'Episode 8', playLink: 'http://example.com/play/episode8', downloadLink: 'http://example.com/download/episode8' },
+                { title: 'Episode 9', playLink: 'http://example.com/play/episode9', downloadLink: 'http://example.com/download/episode9' }
+            ];
+
+            episodes.forEach(episode => {
+                const episodeDiv = document.createElement('div');
+                episodeDiv.classList.add('episode-buttons');
+
+                const playButton = document.createElement('button');
+                playButton.innerText = `Play ${episode.title}`;
+                playButton.onclick = () => {
+                    window.location.href = episode.playLink;
+                };
+
+                const downloadButton = document.createElement('button');
+                downloadButton.innerText = `Download ${episode.title}`;
+                downloadButton.onclick = () => {
+                    // Redirect to 1DM downloader with the download link
+                    window.location.href = `1dm://?url=${encodeURIComponent(episode.downloadLink)}`;
+                };
+
+                episodeDiv.appendChild(playButton);
+                episodeDiv.appendChild(downloadButton);
+                episodesSection.appendChild(episodeDiv);
+            });
+        }
+
+        window.onload = loadEpisodes;
+    </script>
+</body>
+</html>

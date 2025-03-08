@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Video in External Player</title>
+</head>
+<body>
+    <h2>Open Video in External Player</h2>
+    <button onclick="openVideo()">Play in External Player</button>
+
+    <script>
+        function openVideo() {
+            // Your video URL
+            var videoUrl = "http://103.145.232.246/Data/tvseries/English/Squid%20Game/s01/%E2%80%8CSquid.Game.S01E07.720p.NF.WEBRip.Dual.Audio.Hindi.English.MSub.x264.shadow-BonsaiHD.mp4";
+
+            // Intent URL for Android external video player
+            var intentUrl = "intent:" + videoUrl + "#Intent;action=android.intent.action.VIEW;type=video/*;end;";
+            
+            window.location.href = intentUrl;
+        }
+    </script>
+</body>
+</html>

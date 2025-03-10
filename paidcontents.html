@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Digital Planet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1117, #1c2331);
+            color: #00ff00;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #00ff00;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .container {
+            background: rgba(13, 17, 23, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        .login__field {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .login__icon {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            color: #00ff00;
+        }
+
+        .login__input {
+            width: 100%;
+            padding: 10px 10px 10px 40px;
+            border: 2px solid #00ff00;
+            border-radius: 25px;
+            background: transparent;
+            color: #00ff00;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .login__input::placeholder {
+            color: rgba(0, 255, 0, 0.7);
+        }
+
+        .login__input:focus {
+            border-color: #2ea043;
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+        }
+
+        .login__submit {
+            background-color: #238636;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            width: 100%;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .login__submit:hover {
+            background-color: #2ea043;
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 255, 0, 0.4);
+        }
+
+        .login__submit:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Login to Digital Planet</h1>
+    <div class="container">
+        <form class="login" id="loginForm">
+            <div class="login__field">
+                <i class="login__icon fas fa-user"></i>
+                <input type="email" class="login__input" placeholder="Email" id="loginEmail" required>
+            </div>
+            <div class="login__field">
+                <i class="login__icon fas fa-lock"></i>
+                <input type="password" class="login__input" placeholder="Password" id="loginPassword" required>
+            </div>
+            <button type="submit" class="login__submit">
+                Log In Now
+            </button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Digital Planet. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Predefined users (email and password combinations)
+        const users = [
+            { email: "user1@example.com", password: "password1" },
+            { email: "user2@example.com", password: "password2" },
+            { email: "user3@example.com", password: "password3" }
+        ];
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Check if the email and password match any user
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                alert('Login successful! Redirecting...');
+                window.location.href = 'squid-game-page.html'; // Redirect to the Squid Game page
+            } else {
+                alert('Invalid email or password!');
+            }
+        });
+    </script>
+</body>
+</html>
